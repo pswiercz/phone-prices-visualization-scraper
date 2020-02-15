@@ -1,0 +1,90 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+{% include 'navigation.html' %}
+<main role="main" class="container">
+
+<div class="graph_container" id="chart1">
+    {{ div_price_graph|safe }}
+</div>
+{{ script_price_graph|safe }}
+<div class="row">
+    <div class="column" style="background-color:#eee;">
+    <div class="dropdown_lists_container" id="dropdown__">
+            <form name="dropdown-form" action="" method="POST">
+                <select class="my-dropdown-menu" name="dropdown-brand_1" style="padding:2px;border-radius:0px;">
+                    {% for brand in set_brands %}
+                        <option value="{{brand}}" {% if get_brand_1==brand %} selected {% endif %}>{{brand}}</option>
+                    {%endfor%}
+                </select>
+                <select class="my-dropdown-menu" name="dropdown-model_1" style="padding:2px;border-radius:0px;">
+                    {% for model in set_models_1 %}
+                        <option value="{{model}}" {% if get_model_1==model %} selected {% endif %}>{{model}}</option>
+                    {%endfor%}
+                </select>
+    <!--             <br> -->
+                <select class="my-dropdown-menu" name="dropdown-brand_2" style="padding:2px;border-radius:0px;">
+                    {% for brand in set_brands %}
+                        <option value="{{brand}}" {% if get_brand_2==brand %} selected {% endif %}>{{brand}}</option>
+                    {%endfor%}
+                </select>
+                <select class="my-dropdown-menu" name="dropdown-model_2" style="padding:2px;border-radius:0px;">
+                    {% for model in set_models_2 %}
+                        <option value="{{model}}" {% if get_model_2==model %} selected {% endif %}>{{model}}</option>
+                    {%endfor%}
+                </select>
+                <br>
+                <select class="my-dropdown-menu" name="dropdown-brand_3" style="padding:2px;border-radius:0px;">
+                    {% for brand in set_brands %}
+                        <option value="{{brand}}" {% if get_brand_3==brand %} selected {% endif %}>{{brand}}</option>
+                    {%endfor%}
+                </select>
+                <select class="my-dropdown-menu" name="dropdown-model_3" style="padding:2px;border-radius:0px;">
+                    {% for model in set_models_3 %}
+                        <option value="{{model}}" {% if get_model_3==model %} selected {% endif %}>{{model}}</option>
+                    {%endfor%}
+                </select>
+    <!--             <br> -->
+                <select class="my-dropdown-menu" name="dropdown-brand_4" style="padding:2px;border-radius:0px;">
+                    {% for brand in set_brands %}
+                        <option value="{{brand}}" {% if get_brand_4==brand %} selected {% endif %}>{{brand}}</option>
+                    {%endfor%}
+                </select>
+                <select class="my-dropdown-menu" name="dropdown-model_4" style="padding:2px;border-radius:0px;">
+                    {% for model in set_models_4 %}
+                        <option value="{{model}}" {% if get_model_4==model %} selected {% endif %}>{{model}}</option>
+                    {%endfor%}
+                </select>
+                <br>
+                <br>
+                <button class="submit-btn" type="submit">Refresh lists</button>
+            </form>
+    </div>
+    </div>
+    <div class="column" style="background-color:#eee;">
+        <div class="site_items_list_container" id="dropdown_items_list">
+                <form name="site_dropdown-form" action="" method="POST">
+                    <select class="my-dropdown-menu" name="site_item" style="padding:2px;border-radius:0px;">
+                        {% for item in set_site_items %}
+                            {% if item != 'temp' %}
+                                <option>{{item}}</option>
+                            {% endif %}
+                        {%endfor%}
+                    </select>
+                    <button class="submit-btn" type="submit">Set chosen profile</button>
+                </form>
+        </div>
+        <br>
+        <div class="saving_item_list_container" id="item_list_name">
+            <form name="input-form" action="" method="POST">
+                Save list under name:
+                <br>
+                <input type="text" name="input_name">
+
+                <button class="submit-btn" type="submit">Save</button>
+            </form> 
+    </div>
+
+
+</div>
+{% endblock content %}
